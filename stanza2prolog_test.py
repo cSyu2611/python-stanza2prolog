@@ -2,7 +2,8 @@ import stanza
 from word_properties import Word
 
 if __name__ == "__main__":
-    # stanza.download('en')
+    # ↓初回のみ。2回目からは無駄なダウンロードになるのでコメントアウト
+    stanza.download('en')
     nlp = stanza.Pipeline('en')
     doc = nlp("The quick brown fox jumps over the lazy dog.")
     buf = []
