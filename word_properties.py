@@ -25,17 +25,17 @@ class Word:
     def get_prolog_str(self):
         buf = []
         buf.append(
-            f'text({self.id},"{self.text}").') if self.text != None else None
+            f"text({self.id},'{self.text}').") if self.text != None else None
         buf.append(
-            f'lemma({self.id},"{self.lemma}").') if self.lemma != None else None
+            f"lemma({self.id},'{self.lemma}').") if self.lemma != None else None
         buf.append(
-            f'upos({self.id},"{self.upos}").') if self.upos != None else None
+            f"upos({self.id},'{self.upos}').") if self.upos != None else None
         buf.append(
-            f'xpos({self.id},"{self.xpos}").') if self.xpos != None else None
+            f"xpos({self.id},'{self.xpos}').") if self.xpos != None else None
         buf.append(
-            f'feats({self.id},"{self.feats}").') if self.feats != None else None
+            f"feats({self.id},'{self.feats}').") if self.feats != None else None
         buf.append(
-            f'head({self.id},{self.head}).') if self.head != None else None
+            f"head({self.id},{self.head}).") if self.head != None else None
         buf.append(
-            f'deprel({self.id},"{self.deprel}").') if self.deprel != None else None
+            f"deprel({self.id},'{self.deprel}').") if self.deprel != None else None
         return "\n".join(buf)

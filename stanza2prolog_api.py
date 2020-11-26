@@ -38,11 +38,10 @@ stanza.download('en')
 nlp = stanza.Pipeline('en')
 
 @app.get('/')
-async def main(query):
+async def main(query, text):
     query = query
     prolog = Prolog()
-    inp = "I like him."
-    doc = nlp(inp)
+    doc = nlp(text)
     buf = []
     for word in doc.sentences[0].words:
         word_props = Word(word)
