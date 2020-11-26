@@ -38,10 +38,10 @@ stanza.download('en')
 nlp = stanza.Pipeline('en')
 
 @app.get('/')
-async def main(query, text):
+async def main(query):
     query = query
     prolog = Prolog()
-    inp = text
+    inp = "I like him."
     doc = nlp(inp)
     buf = []
     for word in doc.sentences[0].words:
@@ -51,11 +51,12 @@ async def main(query, text):
     prolog_str = "\n".join(buf)
     prolog_str += "\n"
     # prolog_str += 'is_subj_of_pred(SUBJ,PRED):-head(SUBJ_NUM,PRED_NUM),deprel(SUBJ_NUM,"nsubj"),upos(PRED_NUM,"VERB"),text(SUBJ_NUM,SUBJ),text(PRED_NUM,PRED).'
+    prolog_str += query
 
     queryy = query.split(":")[0]
     new_file_name = randomname(10) + ".pl"
     with open(new_file_name, mode="w") as f:
-        f.write(prolog_str + "\n" + query)
+        f.write(prolog_str)
     with io.StringIO() as f:
         sys.stdout = f
         consult = prolog.consult(new_file_name)
